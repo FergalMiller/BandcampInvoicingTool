@@ -56,7 +56,7 @@ class BandcampSalesReportLineParser {
             }
             "track" -> {
                 val catNo = splitLine[headerIndices.catNoIndex]
-                val trackName = splitLine[headerIndices.itemNameIndex]
+                val trackName = removeQuotations(splitLine[headerIndices.itemNameIndex])
                 TrackSale(catNo, trackName, bandcampTransactionId, netSaleValue, grossSaleValue, date)
             }
             "bundle" -> {
@@ -94,5 +94,14 @@ class BandcampSalesReportLineParser {
             }
             else -> throw Exception("Unrecognised item type.")
         }
+    }
+
+    private fun removeQuotations(s: String): String {
+
+        if (s.startsWith("\"") && s.endsWith("\"") && s.contains(",")) {
+            return s.substring(1, s.length - 1)
+        }
+
+        return s
     }
 }
