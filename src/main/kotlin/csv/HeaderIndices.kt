@@ -48,7 +48,7 @@ data class HeaderIndices(
         }
 
         private fun getHeaderIndex(headerIndices: Map<String, Int>, header: String): Int {
-            return headerIndices[header] ?: throw Exception("Could not create header indices. No column for \"$header\"")
+            return headerIndices[header] ?: throw Exception("Could not create header indices. No column for \"$header\". Header indices: $headerIndices")
         }
     }
 }
