@@ -245,7 +245,10 @@ class Catalogue(private val releases: MutableList<Release> = mutableListOf()) {
         val share = contract.calculateSaleShare(saleInformation.netValue, itemType, artistOutstandingExpenses)
 
         val newExpenseValue = artistOutstandingExpenses - share.labelShare
-        outstandingExpensesPerArtist[artistName] = newExpenseValue
+        if (newExpenseValue < 0)
+            outstandingExpensesPerArtist[artistName] = 0
+        else
+            outstandingExpensesPerArtist[artistName] = newExpenseValue
 
         val itemDetails = ItemDetails(itemName, itemType)
         val labelPayout = if (share.labelShare <= 0) null else LabelPayout(catNo, share.labelShare)
