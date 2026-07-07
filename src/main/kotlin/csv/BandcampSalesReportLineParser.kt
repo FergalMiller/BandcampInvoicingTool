@@ -38,7 +38,7 @@ class BandcampSalesReportLineParser {
             // Ignore payouts & pending sales
             // Pending reversal and cancelled reversal I don't believe have any impact, as refunds should be dealt with and these are just loose states around this?
             // Adjustment I have no idea what this is, appeared once and never justified
-            "payout", "pending sale", "pending reversal", "cancelled reversal", "adjustment" -> return null
+            "payout", "pending sale", "pending reversal", "cancelled reversal", "reversal" /* TODO: Manage reversals */, "adjustment" -> return null
         }
 
         val bandcampTransactionId = splitLine[headerIndices.bandcampTransactionIdIndex]
