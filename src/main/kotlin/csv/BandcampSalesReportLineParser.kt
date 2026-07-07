@@ -94,8 +94,8 @@ class BandcampSalesReportLineParser {
                     )
                 }
             }
-            "refund" -> null
-            else -> throw Exception("Unrecognised item type.")
+            "refund", "reversal" /* TODO: Manage these */ -> null
+            else -> throw Exception("Unrecognised item type \"$itemType\"")
         }
     }
 
