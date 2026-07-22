@@ -4,7 +4,7 @@ import java.math.BigDecimal
 import java.math.RoundingMode
 import kotlin.math.roundToInt
 
-class Split private constructor(splitEntries: Set<Pair<String, Float>>) : HashMap<String, Float>() {
+class Split private constructor(splitEntries: Set<Pair<String, Float>>) : LinkedHashMap<String, Float>() {
 
     companion object {
 
